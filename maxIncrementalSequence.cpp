@@ -1,7 +1,11 @@
 void maxIncrementalSequence(int A[], int n)
 {
-	int L[n +3];
-	L[0] = 0; 
+	/* 
+	*	Gọi L[i] là độ dài của đoạn dãy con tăng lớn nhất kết thúc tại n
+	*	
+	*/
+	int Length[n +3];
+	Length[0] = 0;  // Nếu  
 	
 	for(int i =1 ;i <= n ;i ++)
 	{
