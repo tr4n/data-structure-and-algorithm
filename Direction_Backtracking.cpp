@@ -13,6 +13,7 @@ int recentValue = 0, recentMaxValue = -1;
 int recentX = 1, recentY = 1; 
 int Answer = INT_MIN; 
 int number = 0 ; 
+int numberDecrease = 0; 
 
 void Init()
 {
@@ -41,7 +42,7 @@ void Init()
 	}
 	numberSteps = M+N -2; 
 	recentValue = A[1][1];
-	recentMaxValue = recentValue + minValue[1][1];
+	recentMaxValue = recentValue + minValue[1][1]*(numberSteps);
 }
 
 bool checkDecrease(int i, int position){
@@ -119,7 +120,11 @@ void BackTrack(int position)
 	}	
 	for(int i = 0 ;i <= 1; i ++){
 			
-		if(!checkDecrease(i,position)) continue; 
+		if(!checkDecrease(i,position)) {
+			
+			numberDecrease ++; 
+			continue; 
+		}
 		
 		Result[position] = i; 		
 		Decrease(i,position,0);
@@ -130,10 +135,11 @@ void BackTrack(int position)
 
 void ShowAnswer()
 {
-	cout <<"Answer : " <<  Answer << endl;
+	cout <<"Answer    : " <<  Answer << endl;
 	int x = 1, y = 1;
 	
-	cout << "number of Processing : " << number << endl;
+	cout << "Decrease  : " << numberDecrease << " times ." << endl;
+	cout << "Caculate  : " << number 		<< " times." << endl;
 	cout << "PATH : " << endl; 
 	cout <<" (" <<  x << "," <<y << ")" << endl; 
 	
@@ -141,7 +147,7 @@ void ShowAnswer()
 		
 		if(Path[i] == 0)	y ++;
 		else 			x ++;
-		cout << " ("<<x << "," <<y << ")\n";	
+		cout << " ("<<x << "," <<y << ")| " << A[x][y] << "\n";	
 	}	
 }
 
