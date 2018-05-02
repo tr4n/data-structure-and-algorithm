@@ -1,4 +1,4 @@
-int countNodes(struct BNode *root)
+int countBNodes(struct BNode *root)
 {
 	if(root == NULL)
 	{
